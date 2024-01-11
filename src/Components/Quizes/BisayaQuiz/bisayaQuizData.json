@@ -1,0 +1,28 @@
+[
+    {
+      "id": 1,
+      "questionText": "The Bisaya word _______ generally means to accelerate or to speed up, especially in the context of vehicles or moving forward quickly. It's derived from the root word ______ which implies rapid movement.",
+      "correctAnswer": "arangkada"
+    },
+    {
+      "id": 2,
+      "questionText": "The Bisaya word ______ means found or discovered in English. It is the past tense of the verb angita, which means to find or to search for. _________ implies that something or someone that was being sought has been located",
+      "correctAnswer": "napalgan"
+    },
+    {
+    "id": 3,
+    "questionText": " translates to 'nicknamed' or 'dubbed' ",
+    "correctAnswer": "gibansagan"
+    },
+    {
+    "id": 4,
+    "questionText": "  translates to 'former' or 'previous' in English. It is used to refer to something or someone that used to hold a certain position or state but does not anymore. This term is often used in the context of time, referring to past events, roles, or statuses.",
+    "correctAnswer": "kanhi"
+    },
+    {
+    "id": 5,
+    "questionText": "The Bisaya word ________ translates to about or regarding in English. It is used to refer to the subject or topic of a conversation, document, or discussion. This word is often used to introduce or specify the theme or focus of what is being talked about.",
+    "correctAnswer": "mahitungod"
+    }
+]
+  
