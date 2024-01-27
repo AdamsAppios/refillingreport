@@ -35,15 +35,15 @@ export const reducer = (state, action) => {
             return { ...state, isBlue: false, isRed: false };
         case actionTypes.SAVE_DATA:
             const dataString = `
-                Date=${state.date_monitored};
-                Time=${state.cctvTime};
-                Dropdown=${state.selectedDropdownValue};
-                Dealer=${state.dealer};
-                Pickup=${state.pickup};
-                Small=${state.small};
-                Square=${state.square};
-                SmallSquare=${state.squareSmall};
-                textAreaNotes=${state.textAreaNotes};
+                Date=${state.date_monitored},
+                Time=${state.cctvTime},
+                Dropdown=${state.selectedDropdownValue},
+                Dealer=${state.dealer},
+                Pickup=${state.pickup},
+                Small=${state.small},
+                Square=${state.square},
+                SmallSquare=${state.squareSmall},
+                textAreaNotes=${state.textAreaNotes},
             `;
             return { ...state, textAreaValue: dataString };
 

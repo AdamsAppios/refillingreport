@@ -7,7 +7,6 @@ import ButtonGroup from './components/ButtonGroup';
 import DropdownSelectorGroup from './components/DropdownSelectorGroup';
 import { toggleBackgroundColor } from './Utilities/utils';
 import { useReducer, useEffect, useState } from 'react';
-import axios from 'axios';
 
 
 const RefillingIhapCamera = () => {
