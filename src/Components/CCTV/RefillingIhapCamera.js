@@ -82,21 +82,21 @@ const RefillingIhapCamera = () => {
 
     useEffect (()=> {
         console.log(`drop down is ${state.selectedDropdownValue}`);
-        if (state.selectedDropdownValue == "Bellaswan") {
+        if (state.selectedDropdownValue === "Bellaswan") {
           //setUrlSaveLocation(`/api/talambansave/`);
           //setUrlLoadLocation("/api/talambanload/");
           setUrlLocations({
             saveLocation: `/api/talambansave/`,
             loadLocation: "/api/talambanload/"
             });
-        } else if (state.selectedDropdownValue == "ARSO") {
+        } else if (state.selectedDropdownValue === "ARSO") {
           //setUrlSaveLocation(`/api/labangonsave/`);
           //setUrlLoadLocation("/api/labangonload/");
           setUrlLocations({
             saveLocation: `/api/labangonsave/`,
             loadLocation: "/api/labangonload/"
             });
-        } else if (state.selectedDropdownValue == "Kalimpio") {
+        } else if (state.selectedDropdownValue === "Kalimpio") {
           //setUrlSaveLocation(`/api/kalimpiosave/`);
           //setUrlLoadLocation("/api/kalimpioload/");
           setUrlLocations({
@@ -148,33 +148,6 @@ const RefillingIhapCamera = () => {
             value: state.textAreaValue
         });
     };
-
-    const handleLoadDjango = async () => {
-        try {
-          const response = await axios.get(`${urlLocations.loadLocation}${state.date_monitored}/`);
-          let dataToLoad = response.data;
-          dispatch({ type: actionTypes.LOAD_DATA_FROM_DJANGO_SERVER, dataToLoad: dataToLoad });
-          console.log(dataToLoad)
-          return response.data;
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    
-      const handleSaveDjango = async (event) => {
-        console.log(urlLocations.saveLocation);
-        event.preventDefault();
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        axios.defaults.baseURL = 'http://127.0.0.1:8008/';
-        axios.defaults.headers.common['X-CSRFToken'] = csrftoken;
-        const baseURL = 'http://127.0.0.1:8008/';
-        try {
-          const response = await axios.post(`${baseURL}${urlLocations.saveLocation}${state.date_monitored}/`, state);
-          console.log(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
     
     const setInputValue = (inputName, inputValue) => {
         dispatch({
@@ -197,6 +170,8 @@ const RefillingIhapCamera = () => {
 
     return (
         <div style={bodyStyle}>
+            <ButtonGroup buttons={ [{ label: 'Save', onClick: handleSave },
+                                    { label: 'Load', onClick: handleLoad },]} />
             <InputGroup type="date" label="Date:" value={state.date_monitored} onChange={(e) => setInputValue('date_monitored', e.target.value)} />
             <InputGroup type="time" label="Time:" value={state.cctvTime} onChange={(e) => setInputValue('cctvTime', e.target.value)} />
             <DropdownSelectorGroup
@@ -247,6 +222,16 @@ const RefillingIhapCamera = () => {
             />
             <ButtonGroup buttons={ [{ label: 'Add', onClick: handleAdd },
                                     { label: 'Subtract', onClick: handleSub },]} />
+                        <div style={{margin: '10px 0',}}>
+            <h3> Notes To Note:</h3>
+            <textarea 
+                    value={state.textAreaNotes} 
+                    onChange={(e) => setInputValue('textAreaNotes', e.target.value)}
+                    rows="8"
+                    cols="50"
+            ></textarea>
+            </div>
+            <h3> Copy Data Below To Load</h3>
             <div style={{margin: '10px 0',}}>
                 <textarea 
                     value={state.textAreaValue} 
@@ -255,8 +240,6 @@ const RefillingIhapCamera = () => {
                     cols="50"
                 ></textarea>
             </div>
-            <ButtonGroup buttons={ [{ label: 'Save', onClick: handleSave },
-                                    { label: 'Load', onClick: handleLoad },]} />
         </div>
     );
 

@@ -43,11 +43,12 @@ export const reducer = (state, action) => {
                 Small=${state.small};
                 Square=${state.square};
                 SmallSquare=${state.squareSmall};
+                textAreaNotes=${state.textAreaNotes};
             `;
             return { ...state, textAreaValue: dataString };
 
         case actionTypes.LOAD_DATA:
-            const values = action.value.split(";").reduce((acc, item) => {
+            const values = action.value.split(",").reduce((acc, item) => {
                 const [key, value] = item.split("=").map(str => str.trim());
                 if (key && value) acc[key] = value;
                 return acc;
@@ -62,13 +63,13 @@ export const reducer = (state, action) => {
                 pickup: Number(values.Pickup) || state.pickupCount,
                 small: Number(values.Small) || state.smallCount,
                 square: Number(values.Square) || state.squareCount,
-                squareSmall: Number(values.SmallSquare) || state.smallSquareCount
+                squareSmall: Number(values.SmallSquare) || state.smallSquareCount,
+                textAreaNotes: values.textAreaNotes || state.textAreaNotes
             };
         case actionTypes.LOAD_DATA_FROM_DJANGO_SERVER:
             return { ...state, ...action.dataToLoad};
         case actionTypes.SET_INPUT_VALUE:
             return { ...state, [action.inputName]: action.inputValue };
-
         default:
             return state;
     }

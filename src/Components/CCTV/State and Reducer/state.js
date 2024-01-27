@@ -10,6 +10,7 @@ export const initialState = {
     selectedDropdownValue: "Bellaswan",
     date_monitored: "", //v
     cctvTime: "",       //v
+    textAreaNotes:"", //v
     textAreaValue: "",
     multipleCount: "1",
     selectedOption: 'dealer'
