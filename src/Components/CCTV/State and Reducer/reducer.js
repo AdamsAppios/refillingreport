@@ -1,5 +1,13 @@
 import {actionTypes} from './actionTypes';
 
+
+function processNumber(input) {
+    if (typeof input === 'undefined' || isNaN(input)) {
+        return 0;
+    } else {
+        return input;
+    }
+}
 export const reducer = (state, action) => {
     switch (action.type) {
         case actionTypes.ADJUST_COUNT:
@@ -59,11 +67,11 @@ export const reducer = (state, action) => {
                 date_monitored: values.Date || state.date,
                 cctvTime: values.Time || state.time,
                 selectedDropdownValue: values.Dropdown || state.selectedDropdownValue,
-                dealer: Number(values.Dealer) || state.dealerCount,
-                pickup: Number(values.Pickup) || state.pickupCount,
-                small: Number(values.Small) || state.smallCount,
-                square: Number(values.Square) || state.squareCount,
-                squareSmall: Number(values.SmallSquare) || state.smallSquareCount,
+                dealer: processNumber(Number(values.Dealer)) || state.dealerCount,
+                pickup: processNumber(Number(values.Pickup)) || state.pickupCount,
+                small: processNumber(Number(values.Small)) || state.smallCount,
+                square: processNumber(Number(values.Square)) || state.squareCount,
+                squareSmall: processNumber(Number(values.SmallSquare)) || state.smallSquareCount,
                 textAreaNotes: values.textAreaNotes || state.textAreaNotes
             };
         case actionTypes.LOAD_DATA_FROM_DJANGO_SERVER:
